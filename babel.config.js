@@ -1,18 +1,25 @@
-const presets = ['module:metro-react-native-babel-preset']
-const plugins = []
-
-plugins.push([
-  'module-resolver',
-  {
-    root: ['./src'],
-    extensions: ['.js', '.json'],
-    alias: {
-      '@': './src',
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    env: {
+      "production": {
+        "plugins": ["ignite-ignore-reactotron"]
+      }
     },
-  },
-])
-
-module.exports = {
-  presets,
-  plugins,
-}
+    plugins: [
+      [
+        'module-resolver',
+        {
+          alias: {
+            components: './src/components',
+            scenes: './src/scenes', 
+            theme: './src/theme',
+            utils: './src/utils',
+            modules: './src/modules'
+          },
+        },
+      ],
+    ],
+  };
+};

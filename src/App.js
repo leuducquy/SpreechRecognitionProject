@@ -1,24 +1,53 @@
-import 'react-native-gesture-handler'
-import React from 'react'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/lib/integration/react'
-import { store, persistor } from '@/Store'
-import { ApplicationNavigator } from '@/Navigators'
-import './Translations'
+import React, { Component } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-const App = () => (
-  <Provider store={store}>
-    {/**
-     * PersistGate delays the rendering of the app's UI until the persisted state has been retrieved
-     * and saved to redux.
-     * The `loading` prop can be `null` or any react instance to show during loading (e.g. a splash screen),
-     * for example `loading={<SplashScreen />}`.
-     * @see https://github.com/rt2zz/redux-persist/blob/master/docs/PersistGate.md
-     */}
-    <PersistGate loading={null} persistor={persistor}>
-      <ApplicationNavigator />
-    </PersistGate>
-  </Provider>
-)
+import Login from './screens/Login'
 
-export default App
+import AuthLoadingScreen from './screens/AuthLoadingScreen'
+
+import TabNavigator from './tab'
+import { connect } from 'react-redux'
+
+const Stack = createStackNavigator()
+
+// create a component
+class App extends Component {
+  render() {
+    const isLogin = this.props.isLogin
+    return (
+      <NavigationContainer>
+        {isLogin ? (
+          <TabNavigator />
+        ) : (
+          <Stack.Navigator
+            // initialRouteName="AuthLoadingScreen"
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="AuthLoadingScreen" component={AuthLoadingScreen} />
+            <Stack.Screen name="Login" component={Login} />
+          
+
+          
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    isLogin: state.auth.isLogin,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: () => dispatch(increment()),
+    dispatch,
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

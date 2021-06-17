@@ -1,0 +1,40 @@
+const Colors = {
+    // theme: 'rgb(255,39,103)',
+    theme: 'rgb(215,61,96)',
+    themeOpacity: 'rgba(255,39,103,0.3)',
+    text: 'rgb(74,74,74)',
+    textNew: '#484848',
+    border: 'rgb(151,151,151)',
+    platinumCard: '#bce2e8',
+    goldCard: '#ebe1a9',
+    silverCard: '#E1E1E1',
+    borderSecond: '#d8d8d8',
+    newBorder: 'rgb(121,121,121)',
+    blue: 'rgb(78,152,243)',
+    date : '#b7b7b7',
+    signup : "#212121",
+    white:"#FFFFFF",
+    green:'rgb(14,186,146)',
+    disable:'rgb(204,204,204)',
+    calender:'rgb(33,33,33)',
+    black43:'rgb(43,43,43)',
+    grayButton :'rgb(204,204,204)',
+    noneJpointBg :'#E5E5E5',
+    redeemPageColorButton:'rgb(255,39,103)',
+    baseBlack:'#212121',
+    black:'rgb(33,33,33)',
+    grayText:'rgb(183,183,183)',
+    transparent:'transparent',
+    redNoti:'#D73D60',
+    titleTopPage:'#9F8B52',
+    grayHistory:'rgb(119, 119, 119)',
+    deleteAccount:'rgb(74,74,74)',
+    soldOut:'rgb(73,17,28)',
+    login:'#212121',
+    baseColor:'#F78F2D',
+    policy:'#A9A9A9'
+  
+    
+  };
+  export default Colors;
+  
